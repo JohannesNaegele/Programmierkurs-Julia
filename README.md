@@ -4,7 +4,7 @@ In diesem Repository finden sich die Materialien für den Programmierkurs Julia 
 
 ## Informationen zur Klausur
 
-- 45min
+- 45 Minuten
 - Googlen ist erlaubt, aber keine fortgeschrittene AI (ChatGPT etc.) oder externe Hilfe
 - Skript/Notebook muss (am Stück) lauffähig sein!
 - Die typischen Themen und der Klausuraufbau werden in etwa so aussehen:

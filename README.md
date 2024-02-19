@@ -2,6 +2,10 @@
 
 In diesem Repository finden sich die Materialien für den Programmierkurs Julia 2024.
 
+## Weitere Resourcen
+
+- Eine schöne Einführung durch Beispiele: [The Julia Express](http://bogumilkaminski.pl/files/julia_express.pdf)
+
 ## Informationen zur Klausur
 
 - 45 Minuten

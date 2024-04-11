@@ -48,7 +48,7 @@ sort(airquality, :Wind, rev=true)
 @pipe airquality |>
 dropmissing(_, :Ozone) |>
       describe(_, length => :n_obs, mean ∘ skipmissing => :mean) |> # es ginge auch (x -> mean(skipmissing(x)))
-      subset(_, :variable => ByRow(==(:Ozone))) # 42.1293
+      subset(_, :variable => ByRow(==(:Ozone)))
 
 # (f)
 @pipe airquality |>
@@ -58,7 +58,7 @@ dropmissing(_, :Ozone) |>
 
 # (g)
 @pipe airquality |>
-transform(_, :Ozone => (x -> x .- mean(skipmissing(x))) => "Ozone deviation") |>
+transform(_, :Ozone => (x -> abs.(x .- mean(skipmissing(x)))) => "Ozone deviation") |>
       transform(_, ["Ozone", "Solar.R"] => (.*) => :OS)
 
 # (h)
@@ -96,7 +96,7 @@ date_tick = Dates.format.(tick_years, "mm")
         xticks=(tick_years, date_tick)
     )
 # noch schöner ist:
-# date_tick = monthname.(Dates.month.(indexemonths))
+date_tick = monthname.(Dates.month.(tick_years))
 
 ## Aufgabe 2
 

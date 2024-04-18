@@ -47,14 +47,14 @@ sort(airquality, :Wind, rev=true)
 # (e)
 @pipe airquality |>
 dropmissing(_, :Ozone) |>
-      describe(_, length => :n_obs, mean ∘ skipmissing => :mean) |> # es ginge auch (x -> mean(skipmissing(x)))
-      subset(_, :variable => ByRow(==(:Ozone)))
+    describe(_, length => :n_obs, mean ∘ skipmissing => :mean) |> # es ginge auch (x -> mean(skipmissing(x)))
+    subset(_, :variable => ByRow(==(:Ozone)))
 
 # (f)
 @pipe airquality |>
-      transform(_, :Temp => (ByRow(x -> x > 25 ? :hot : :cold)) => :TempCat) |>
-      groupby(_, :TempCat) |>
-      combine(_, nrow => :count)
+    transform(_, :Temp => (ByRow(x -> x > 25 ? :hot : :cold)) => :TempCat) |>
+    groupby(_, :TempCat) |>
+    combine(_, nrow => :count)
 
 # (g)
 @pipe airquality |>
@@ -77,13 +77,13 @@ histogram(airquality.Temp,
 # (i)
 august_or_no_wind(month, wind) = month == 8 || wind < 7
 @pipe airquality |>
-      filter([:Month, :Wind] => august_or_no_wind, _) |>
-      filter(:Ozone => !ismissing, _) |>
-      histogram!(_.Temp)
+    filter([:Month, :Wind] => august_or_no_wind, _) |>
+    filter(:Ozone => !ismissing, _) |>
+    histogram!(_.Temp)
 
 # (j)
 @pipe airquality |>
-      transform!(_, [:Month, :Day] => ByRow((m, d) -> Date("1973-$m-$d")) => :Date)
+    transform!(_, [:Month, :Day] => ByRow((m, d) -> Date("1973-$m-$d")) => :Date)
 
 # (k)
 tick_years = @pipe airquality.Date |> minimum(_):Month(1):maximum(_)

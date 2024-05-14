@@ -49,7 +49,7 @@ using Plots
 # (d)
 describe(df.ArrDelay)
 df_filtered = @pipe df |>
-    subset(_, :ArrDelay => ByRow(<=(2 * 60)), skipmissing=true)
+    subset(_, :ArrDelay => ByRow(<(2 * 60)), skipmissing=true)
 
 # (e)
 # stetiger Wertebereich -> Histogramm
@@ -140,6 +140,15 @@ npanels = length(grps)
 a = sum(12:10:152)
 
 # (b)
+function print_triangle(n)
+    for i in 1:n
+        println(repeat("*", i))
+    end
+end
+
+print_triangle(5)
+
+# (c)
 function sum_multiples_of_6(n)
     sum = 0
     for i in 1:n
@@ -152,7 +161,7 @@ end
 
 sum_multiples_of_6(199)
 
-# (c)
+# (d)
 function rev(text)
     result = ""
     for i in text
@@ -190,11 +199,11 @@ end
 
 list = LinkedList(1.0)
 insert!(list, 2.0)
-# diese Funktionen haben wir noch nicht:
+# Diese Funktionen haben wir noch nicht:
 # length(list)
 # list[1]
 
-# definiere wrapper struct
+# Definiere wrapper struct
 struct ListArray{T} <: AbstractArray{T,1}
     data::LinkedList{T}
 end

@@ -71,6 +71,7 @@ mutable struct LinkedList{T}
     next::Union{Nothing, LinkedList{T}}
 end
 
+# Hilfsfunktion: outer constructor
 LinkedList(value) = LinkedList{typeof(value)}(value, nothing)
 
 list = LinkedList(1.0)
@@ -97,7 +98,7 @@ get(list, 1)
 # (a)
 using DataFrames, CSV, Pipe
 df =
-    CSV.File("./../data/weatherAUS.csv", missingstring = "NA") |> DataFrame
+    CSV.File("src/data/weatherAUS.csv", missingstring = "NA") |> DataFrame
 
 # (b)
 describe(df)
